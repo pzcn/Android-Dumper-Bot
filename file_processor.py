@@ -75,7 +75,7 @@ def list_partitions(url, outputdir='output'):
 
         tempdir = tempfile.mkdtemp()
 
-        command = f'/home/ubuntu/.local/bin/payload_dumper --out {tempdir} --list "{url}"'
+        command = f'payload_dumper --out {tempdir} --list "{url}"'
         exit_code = asyncio.run(run_payload_dumper(tempdir, url, command))  # 直接执行命令
         if exit_code != 0:
             shutil.rmtree(tempdir)
@@ -129,7 +129,7 @@ def dump_partition(url, partition_name, outputdir='output'):
         print('正在提取分区...', file=sys.stdout)
         print('STATUS_END', file=sys.stdout)
 
-        command = f'/home/ubuntu/.local/bin/payload_dumper --out {tempdir} --partitions {partition_name} "{url}"'
+        command = f'payload_dumper --out {tempdir} --partitions {partition_name} "{url}"'
         exit_code = asyncio.run(run_payload_dumper(tempdir, url, command))  # 直接执行命令
         if exit_code != 0:
             shutil.rmtree(tempdir)
@@ -188,7 +188,7 @@ def fetch_metadata(url, outputdir='output'):
         print('正在获取元数据...', file=sys.stdout)
         print('STATUS_END', file=sys.stdout)
 
-        command = f'/home/ubuntu/.local/bin/payload_dumper --out {tempdir} --metadata "{url}"'
+        command = f'payload_dumper --out {tempdir} --metadata "{url}"'
         exit_code = asyncio.run(run_payload_dumper(tempdir, url, command))  # 直接执行命令
         if exit_code != 0:
             shutil.rmtree(tempdir)

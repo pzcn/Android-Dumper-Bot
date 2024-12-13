@@ -21,12 +21,10 @@ from telegram.request import HTTPXRequest
 from aiocache import cached, caches
 from contextlib import asynccontextmanager
 
-app = FastAPI()
-
 # 设置 Telegram Bot 的 API 密钥
-TOKEN = 'xxx'
-CHANNEL_USERNAME = '@xxx'  # 替换为您的频道用户名
-WEBHOOK_URL = 'https://bot.xxx/webhook'
+TOKEN = os.getenv('BOT_TOKEN')
+CHANNEL_USERNAME = os.getenv('CHANNEL_NAME')  # 替换为您的频道用户名
+WEBHOOK_URL = os.getenv('WEBHOOK_URL')
 CDN_URL = "https://bkt-sgp-miui-ota-update-alisgp.oss-ap-southeast-1.aliyuncs.com/"
 MIUI_URL_REGEX = r"https://(?:bn|bigota|cdnorg|hugeota)\.d\.miui\.com/(.*)"
 BLACKLISTED_PARTITIONS = [
@@ -192,7 +190,7 @@ async def retry_async(chat_id, status_message_id, coro_function, *args, retry_ms
                     text=f"Upload error, failed to retry {max_retries} times. Please try again later\n上传错误，重试{max_retries}次失败。请稍后再试",
                     parse_mode="HTML"
                 )
-                raise error(f"Error occurred: {e}. Maximum retries reached.")
+                raise Exception(f"Error occurred: {e}. Maximum retries reached.")
                 raise e
 
 async def send_inline_message(chat_id, text, inline_keyboard=None):
@@ -893,7 +891,7 @@ async def run_payload_dumper_command(update: Update, context: CallbackContext, c
         )
 
 
-        
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     webhook_url = f"https://api.telegram.org/bot{TOKEN}/setWebhook"

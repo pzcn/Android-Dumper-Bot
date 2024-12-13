@@ -2,6 +2,9 @@ import requests
 import re
 import sys
 import struct
+import urllib
+import hashlib
+import os
 from payload_dumper import http_file
 import zipfile 
 
@@ -97,8 +100,10 @@ def get_filename_from_url(url):
             content_disposition = response.headers.get('Content-Disposition')
             if content_disposition:
                 try:
-                    params = urllib.parse.parse_qs(content_disposition.split(';')[1].strip())
-                    filename = params.get('filename', [None])[0]
+                    options = content_disposition.split(';')
+                    results = [*filter(lambda x: x.strip().startswith('filename'), options)]
+                    if results:
+                        filename = results[0].split('=')[1].strip()
                 except (ValueError, IndexError) as e:
                     print('ERROR:', file=sys.stderr)
                     print('Failed to parse Content-Disposition header:', str(e), file=sys.stderr)
