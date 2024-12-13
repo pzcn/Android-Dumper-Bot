@@ -1,0 +1,117 @@
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Open Sans', sans-serif;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+:root {
+    --bg-color: #f8f9fa;
+    --container-bg: #ffffff;
+    --text-color: #000000;
+    --link-color: #0d6efd;
+    --input-bg: #ffffff;
+    --input-text: #000000;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --container-bg: #333;
+    --text-color: #ffffff;
+    --link-color: #90caf9;
+    --input-bg: #444;
+    --input-text: #ffffff;
+}
+
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 20px;
+    background: var(--container-bg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.status-text, .error-text, .file-text, .btn-download, .progress {
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.file-text {
+    font-size: 16px;
+    color: var(--link-color);
+    cursor: pointer;
+}
+
+.file-text:hover {
+    text-decoration: underline;
+}
+
+.file-icon, .error-icon {
+    margin-right: 8px;
+    font-size: 24px;
+}
+
+.error-icon {
+    color: #dc3545;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.btn-primary:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.icon-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-container a, .icon-container button {
+    color: var(--text-color);
+    font-size: 24px;
+    border: none;
+    background: none;
+    line-height: 1;
+    vertical-align: middle;
+    padding: 0;
+}
+
+.icon-container a:hover, .icon-container button:hover {
+    color: var(--link-color);
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group .form-control.is-invalid {
+    padding-right: 2.25rem;
+}
+
+.input-group .error-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+input {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+}

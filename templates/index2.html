@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Payload Dumper Web</title>
+    <link rel="stylesheet" href="https://s4.zstatic.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/5.15.4/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://s4.zstatic.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </noscript>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/pedrozhang/res@minify/style.css">
+</head>
+<body data-theme="light">
+    <div class="container">
+            <div class="icon-container d-flex justify-content-end">
+            <a href="https://github.com/pzcn" target="_blank" class="me-2"><i class="fab fa-github"></i></a>
+            <a href="https://t.me/Pillboard" target="_blank" class="me-2"><i class="fab fa-telegram"></i></a>
+            <button id="themeToggle" class="btn btn-light">
+                <i class="fas fa-adjust" id="currentThemeIcon"></i>
+            </button>
+        </div>
+        <div class="text-center mb-4">
+            <img src="https://cdn.jsdelivr.net/gh/pedrozhang/res@minify/bg.webp" class="img-fluid" alt="Logo" style="max-height: 100px;">
+        </div>
+        <h1 class="text-center mb-4">Payload Dumper Web</h1>
+        <form id="param-form" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="arg2" class="form-label">URL:</label>
+                <div class="input-group">
+                    <input type="url" class="form-control" id="arg2" name="arg2" required aria-describedby="arg2-icon">
+                    <i class="fas fa-exclamation-circle error-icon d-none" id="arg2-icon" data-bs-toggle="tooltip" data-bs-placement="right"></i>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" disabled>Submit</button>
+            </div>
+        </form>
+        <div id="output-section" class="hidden text-center">
+            <div id="loading-bar" class="progress hidden">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;"></div>
+            </div>
+            <div id="buttons" class="buttons-section hidden"></div>
+            <div id="status" class="status-text hidden"></div>
+            <div id="error" class="error-text hidden"></div>
+            <div id="file" class="file-text hidden"><i class="fas fa-file-archive file-icon"></i><span id="file-name"></span></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://s4.zstatic.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" defer></script>
+    <script src="https://s4.zstatic.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" defer></script>
+    <script>
+        // 等待 jQuery 加载完成后再加载 script.js
+        $(document).ready(function() {
+            var script = document.createElement('script');
+            script.src = "{{ url_for('static', filename='js/script.js') }}";
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
