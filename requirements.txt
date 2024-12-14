@@ -1,0 +1,6 @@
+payload_dumper @ git+https://github.com/5ec1cff/payload-dumper
+python-telegram-bot
+fastapi
+aiocache
+requests
+uvicorn

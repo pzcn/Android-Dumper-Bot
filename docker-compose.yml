@@ -1,0 +1,9 @@
+services:
+  payload_bot:
+    image: ghcr.io/jeffpeng3/android-dumper-bot:main
+    environment:
+      - BOT_TOKEN=
+      - CHANNEL_NAME=
+      - WEBHOOK_URL=
+    ports:
+      - "6400:6400"
